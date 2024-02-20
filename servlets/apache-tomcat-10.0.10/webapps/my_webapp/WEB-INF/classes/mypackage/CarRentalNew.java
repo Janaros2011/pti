@@ -53,18 +53,7 @@ public class CarRentalNew extends HttpServlet {
     obj.put("disc", disc);
     obj.put("units", units);
     
-    /*JSONParser parser = new JSONParser();
-    
-    try (Reader reader = new FileReader("/home/alumne/pti/servlets/apache-tomcat-10.0.10/webapps/my_webapp/WEB-INF/classes/mypackage/rentals.json")) {
-		JSONObject jsonObject = (JSONObject) parser.parse(reader);
-		//JSONArray jsonArray = jsonObject.toJSONArray();
-		//jsonArray.add(obj);
-		//obj = (JSONObject) jsonArray;
-		jsonObject.add(obj);
-		obj = jsonObject;
-    }*/
-    
-    File file = new File("/home/alumne/pti/servlets/apache-tomcat-10.0.10/webapps/my_webapp/WEB-INF/classes/mypackage/rentals.json");
+    File file = new File("webapps/my_webapp/rentals.json");
 
     JSONObject jsonObject = new JSONObject();
     JSONArray rentals = new JSONArray();
@@ -84,7 +73,7 @@ public class CarRentalNew extends HttpServlet {
     }
 
 
-    try (FileWriter filew = new FileWriter("/home/alumne/pti/servlets/apache-tomcat-10.0.10/webapps/my_webapp/WEB-INF/classes/mypackage/rentals.json")) {
+    try (FileWriter filew = new FileWriter("webapps/my_webapp/rentals.json")) {
             JSONObject object = new JSONObject();
             object.put("rentals", rentals);
             filew.write(object.toJSONString());
