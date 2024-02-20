@@ -27,7 +27,8 @@ public class CarRentalList extends HttpServlet {
 
       JSONParser parser = new JSONParser();
 
-      try (Reader reader = new FileReader("webapps/my_webapp/rentals.json")) {
+      //try (Reader reader = new FileReader("webapps/my_webapp/rentals.json")) {
+      try (Reader reader = new FileReader("rentals.json")) {
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         JSONArray rentals = (JSONArray) jsonObject.get("rentals");
 

@@ -53,7 +53,8 @@ public class CarRentalNew extends HttpServlet {
     obj.put("disc", disc);
     obj.put("units", units);
     
-    File file = new File("webapps/my_webapp/rentals.json");
+    //File file = new File("webapps/my_webapp/rentals.json");
+    File file = new File("rentals.json");
 
     JSONObject jsonObject = new JSONObject();
     JSONArray rentals = new JSONArray();
@@ -72,8 +73,8 @@ public class CarRentalNew extends HttpServlet {
         e.printStackTrace();
     }
 
-
-    try (FileWriter filew = new FileWriter("webapps/my_webapp/rentals.json")) {
+    //try (FileWriter filew = new FileWriter("webapps/my_webapp/rentals.json")) {
+    try (FileWriter filew = new FileWriter("rentals.json")) {
             JSONObject object = new JSONObject();
             object.put("rentals", rentals);
             filew.write(object.toJSONString());
