@@ -28,14 +28,14 @@ public class CarRentalList extends HttpServlet {
       JSONParser parser = new JSONParser();
 
       //try (Reader reader = new FileReader("webapps/my_webapp/rentals.json")) {
-      try (Reader reader = new FileReader("rentals.json")) { //Docker
+      try (Reader reader = new FileReader("/my_webapp/rentals.json")) { //Docker
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         JSONArray rentals = (JSONArray) jsonObject.get("rentals");
 
         Iterator<JSONObject> iterator = rentals.iterator();
         while (iterator.hasNext()) {
           JSONObject obj = (JSONObject) iterator.next();
-          out.println("<html><big><br>CO2 Rating: "+ obj.get("rating") + "<br>Engine: "+ obj.get("engine")+ "<br>Number of days: "+ obj.get("days") + "<br>Number of units: "+ obj.get("units") +"<br>Discount: "+ obj.get("disc")+"</big></html>");
+          out.println("<html><big>CO2 Rating: "+ obj.get("rating") + "<br>Engine: "+ obj.get("engine")+ "<br>Number of days: "+ obj.get("days") + "<br>Number of units: "+ obj.get("units") +"<br>Discount: "+ obj.get("disc")+"<br><br></big></html>");
           
         }
 
