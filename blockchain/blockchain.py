@@ -295,29 +295,29 @@ def consensus():
 @app.route('/nodes/list', methods=['GET'])
 def list_nodes():
     response = {
-        'nodes': list(blockchain.nodes)
+        'total_nodes': list(blockchain.nodes)
     }
     return jsonify(response), 200
 
 @app.route('/validate', methods=['GET'])
 def validate_chain():
-	#chain = blockchain.chain
 	valid = blockchain.valid_chain(blockchain.chain)
-	if valid:
-		response = {
-			'chain': 'Valid'
-		}
-	else:
-		response = {
-			'chain': 'Invalid'
-		}
+	response = {
+        'validat': valid
+    }
 
 	return jsonify(response), 200
 
 @app.route('/nodes/manipulate', methods=['POST'])
-def manipulate():
+def manipulate_chain():
+    last_block = blockchain.last_block
+    proof = blockchain.proof_of_work(last_block)
+    previous_hash = blockchain.hash(last_block)
+    block = blockchain.new_block(proof, "a")
+    #blockchain.new_block(blockchain.proof_of_work(last_block), blockchain.hash(last_block))
+    response = {'message': 'Chain has been manipulated'}
 
-
+    return jsonify(response), 200
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
